@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+{% block body %}
+<div class="container mt-4">
+    <div class="card-title mb-3">
+        <h2>Delete product</h2>
+        <hr class="border border-secondary opacity-75">
+        <form method="post">
+            {{ form.csrf_token }}
+            <div class="col-12">
+                <div class="form-floating">
+                    {% if form.title_to_delete.errors %}
+                        {{ form.title_to_delete(class="form-control is-invalid", placeholder="example_title_to_delete") }}
+                            <div class="invalid-feedback">{{ form.title_to_delete.errors[0] }}</div>
+                    {% else %}
+                        {{ form.title_to_delete(class="form-control", placeholder="example_title_to_delete") }}
+                    {% endif %}
+                    {{ form.title_to_delete.label }}
+                </div>
+            </div>
+            <div class="mt-4 mb-3">
+                {{ form.delete(class="btn btn-primary btn-md") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

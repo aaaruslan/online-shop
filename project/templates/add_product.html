@@ -1,0 +1,52 @@
+{% extends 'template.html' %}
+{% block body %}
+<div class="container mt-4">
+    <div class="card border-0">
+        <div class="card-title mb-3">
+            <h2>Add product</h2>
+            <hr class="border border-secondary opacity-75">
+        </div>
+        <form method="post">
+        {{ form.csrf_token }}
+            <div class="row g-2">
+                <div class="col-6">
+                    <div class="form-floating">
+                        {% if form.title.errors %}
+                            {{ form.title(class="form-control is-invalid", placeholder="example_title") }}
+                            <div class="invalid-feedback">{{ form.title.errors[0] }}</div>
+                        {% else %}
+                            {{ form.title(class="form-control", placeholder="example_title") }}
+                        {% endif %}
+                        {{ form.title.label }}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        {% if form.price.errors %}
+                            {{ form.price(class="form-control is-invalid", placeholder="description") }}
+                            <div class="invalid-feedback">{{ form.price.errors[0] }}</div>
+                        {% else %}
+                            {{ form.price(class="form-control", placeholder="description") }}
+                        {% endif %}
+                        {{ form.price.label }}
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        {% if form.description.errors %}
+                            {{ form.description(class="form-control is-invalid", placeholder="description") }}
+                            <div class="invalid-feedback">{{ form.description.errors[0] }}</div>
+                        {% else %}
+                            {{ form.description(class="form-control", placeholder="description") }}
+                        {% endif %}
+                        {{ form.description.label }}
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 mb-3">
+                {{ form.submit(class="btn btn-primary btn-md") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'template.html' %}
+{% block body %}
+<div class="card border-secondary position-absolute top-50 start-50 translate-middle p-5">
+    <div class="card-title text-center mb-3">
+        <h2>Log in</h2>
+        <hr class="border border-secondary opacity-75">
+    </div>
+    <form method="post">
+        {{ form.csrf_token }}
+        <div class="row g-2">
+            <div class="col-12">
+                <div class="form-floating">
+                    {{ form.email(class="form-control", placeholder="example_name") }}
+                    {{ form.email.label }}
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating">
+                    {{ form.password(class="form-control", placeholder="password")}}
+                    {{ form.password.label }}
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 mb-3">
+            {{ form.log_in(class="btn btn-primary btn-md")}}
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="{{ url_for('registration') }}">Don't have an account?</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

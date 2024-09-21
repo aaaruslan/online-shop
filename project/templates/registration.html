@@ -1,0 +1,61 @@
+{% extends "template.html" %}
+{% block body %}
+<div class="card border-secondary shadow w-25 position-absolute top-50 start-50 translate-middle p-5">
+    <div class="card-title text-center mb-3">
+        <h2>Sign up</h2>
+        <hr class="border border-secondary opacity-75">
+    </div>
+    <form method="post">
+        {{ form.csrf_token }}
+        <div class="row g-2">
+            <div class="col-12">
+                <div class="form-floating">
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control is-invalid", placeholder="example_name") }}
+                        <div class="invalid-feedback">{{ form.username.errors[0] }}</div>
+                    {% else %}
+                        {{ form.username(class="form-control", placeholder="example_name") }}
+                    {% endif %}
+                    {{ form.username.label }}
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-floating">
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control is-invalid", placeholder="example_name") }}
+                        <div class="invalid-feedback">{{ form.email.errors[0] }}</div>
+                    {% else %}
+                        {{ form.email(class="form-control", placeholder="example@mail.com") }}
+                    {% endif %}
+                    {{ form.email.label }}
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-floating">
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control is-invalid", placeholder="example_name") }}
+                        <div class="invalid-feedback">{{ form.password.errors[0] }}</div>
+                    {% else %}
+                        {{ form.password(class="form-control", placeholder="example@mail.com") }}
+                    {% endif %}
+                    {{ form.password.label }}
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-floating">
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control is-invalid", placeholder="example_name") }}
+                        <div class="invalid-feedback">{{ form.confirm_password.errors[0] }}</div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control", placeholder="example@mail.com") }}
+                    {% endif %}
+                    {{ form.confirm_password.label }}
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 mb-3">
+            {{ form.submit(class="btn btn-primary btn-md") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
